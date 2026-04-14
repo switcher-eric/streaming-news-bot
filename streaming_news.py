@@ -215,16 +215,51 @@ def fetch_feed(feed_config):
 
 
 def post_to_slack(articles, webhook_url):
-    """Post each article as a separate Slack message"""
+    """Post a header followed by each article as a separate Slack message"""
     if not articles:
         print("No new articles to post")
         return
     
     # Sort by relevance score
     articles = sorted(articles, key=lambda x: x["score"], reverse=True)
+    articles = articles[:10]  # Limit to 10 articles per update
+    
+    # Post header message first
+    header_payload = {
+        "blocks": [
+            {
+                "type": "header",
+                "text": {
+                    "type": "plain_text",
+                    "text": "📺 Live Streaming News Update",
+                    "emoji": True
+                }
+            },
+            {
+                "type": "context",
+                "elements": [
+                    {
+                        "type": "mrkdwn",
+                        "text": f"*{len(articles)} new stories* • {datetime.now().strftime('%B %d, %Y at %I:%M %p')} • React with 👍 or reply in thread to discuss"
+                    }
+                ]
+            },
+            {"type": "divider"}
+        ]
+    }
+    
+    response = requests.post(
+        webhook_url,
+        json=header_payload,
+        headers={"Content-Type": "application/json"}
+    )
+    
+    if response.status_code != 200:
+        print(f"Failed to post header: {response.status_code}")
+        return
     
     # Post each article as a separate message
-    for article in articles[:10]:  # Limit to 10 articles per update
+    for article in articles:
         payload = {
             "blocks": [
                 {
@@ -248,8 +283,7 @@ def post_to_slack(articles, webhook_url):
         else:
             print(f"Failed to post: {response.status_code} - {response.text}")
     
-    print(f"Successfully posted {len(articles[:10])} articles to Slack")
-
+    print(f"Successfully posted {len(articles)} articles to Slack")
 
 def main():
     """Main function"""

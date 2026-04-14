@@ -215,7 +215,7 @@ def fetch_feed(feed_config):
 
 
 def post_to_slack(articles, webhook_url):
-    """Post articles to Slack"""
+    """Post each article as a separate Slack message"""
     if not articles:
         print("No new articles to post")
         return
@@ -223,61 +223,32 @@ def post_to_slack(articles, webhook_url):
     # Sort by relevance score
     articles = sorted(articles, key=lambda x: x["score"], reverse=True)
     
-    # Build Slack message
-    blocks = [
-        {
-            "type": "header",
-            "text": {
-                "type": "plain_text",
-                "text": "🔴 Live Streaming News Update",
-                "emoji": True
-            }
-        },
-        {
-            "type": "context",
-            "elements": [
+    # Post each article as a separate message
+    for article in articles[:10]:  # Limit to 10 articles per update
+        payload = {
+            "blocks": [
                 {
-                    "type": "mrkdwn",
-                    "text": f"*{len(articles)} new stories* | {datetime.now().strftime('%B %d, %Y at %I:%M %p')}"
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": f"{article['icon']} *<{article['link']}|{article['title']}>*\n_{article['source']}_\n{article['summary']}"
+                    }
                 }
             ]
-        },
-        {"type": "divider"}
-    ]
+        }
+        
+        response = requests.post(
+            webhook_url,
+            json=payload,
+            headers={"Content-Type": "application/json"}
+        )
+        
+        if response.status_code == 200:
+            print(f"Posted: {article['title']}")
+        else:
+            print(f"Failed to post: {response.status_code} - {response.text}")
     
-    for article in articles[:10]:  # Limit to 10 articles per update
-        blocks.append({
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": f"{article['icon']} *<{article['link']}|{article['title']}>*\n_{article['source']}_\n{article['summary']}"
-            }
-        })
-        blocks.append({"type": "divider"})
-    
-    # Add footer
-    blocks.append({
-        "type": "context",
-        "elements": [
-            {
-                "type": "mrkdwn", 
-                "text": "💡 _Powered by Switcher Studio News Bot_ | Reply in thread to discuss"
-            }
-        ]
-    })
-    
-    payload = {"blocks": blocks}
-    
-    response = requests.post(
-        webhook_url,
-        json=payload,
-        headers={"Content-Type": "application/json"}
-    )
-    
-    if response.status_code == 200:
-        print(f"Successfully posted {len(articles)} articles to Slack")
-    else:
-        print(f"Failed to post to Slack: {response.status_code} - {response.text}")
+    print(f"Successfully posted {len(articles[:10])} articles to Slack")
 
 
 def main():

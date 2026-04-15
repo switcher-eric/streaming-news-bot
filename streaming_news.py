@@ -55,40 +55,57 @@ RSS_FEEDS = [
 
 # Keywords that indicate streaming-relevant content (case-insensitive)
 STREAMING_KEYWORDS = [
-    # Core streaming terms
-    "live stream", "livestream", "streaming", "broadcast", "going live",
+    # Core live streaming terms
+    "live stream", "livestream", "live video", "going live", "broadcast live",
+    "live production", "live event", "streaming live",
     
-    # Platforms
+    # Platforms (live-specific)
     "twitch", "youtube live", "tiktok live", "instagram live", "facebook live",
-    "kick", "rumble", "dlive",
+    "kick.com", "rumble live",
     
-    # Features
-    "monetization", "super chat", "subscription", "bits", "gifted sub",
-    "channel points", "raids", "hosts", "clips", "vod",
+    # Live streaming features
+    "super chat", "live chat", "stream chat", "channel points", "raids",
+    "gifted sub", "bits", "live donations", "stream alerts",
     
-    # Creator economy
-    "creator", "streamer", "content creator", "influencer",
+    # Creator/streamer terms
+    "streamer", "live creator", "content creator", "vtuber",
     
-    # Tech
-    "obs", "streamlabs", "encoder", "rtmp", "webrtc", "low latency",
-    "multicam", "switcher", "live production",
+    # Live streaming tech & gear
+    "obs studio", "streamlabs", "vmix", "ecamm", "wirecast", "xsplit",
+    "stream deck", "capture card", "encoder", "rtmp", "ndi",
+    "streaming software", "multicam", "live switcher",
     
-    # Business
-    "creator fund", "partner program", "affiliate", "creator economy"
+    # Industry terms
+    "creator economy", "creator fund", "partner program", "live commerce",
+    "live shopping", "simulcast", "multistream",
 ]
 
 # Keywords to boost priority (very relevant to live streaming)
 HIGH_PRIORITY_KEYWORDS = [
     "live stream", "livestream", "twitch", "youtube live", "tiktok live",
-    "streaming feature", "creator monetization", "going live", "live video"
+    "streamer", "obs studio", "going live", "live production", "stream deck",
+    "capture card", "live video", "live creator",
 ]
 
 # Keywords to exclude (reduces noise)
 EXCLUDE_KEYWORDS = [
-    "netflix", "disney+", "hulu", "amazon prime video", "apple tv+",
-    "movie stream", "music streaming", "spotify", "audio stream"
+    # Streaming devices (not live streaming)
+    "fire stick", "firestick", "fire tv", "roku", "chromecast", "apple tv",
+    "streaming box", "streaming stick", "streaming device", "set-top box",
+    "4k streaming", "8k streaming",
+    
+    # VOD/entertainment streaming
+    "netflix", "disney+", "disney plus", "hulu", "amazon prime video",
+    "hbo max", "paramount+", "peacock", "apple tv+",
+    "movie stream", "stream movies", "binge watch", "streaming service",
+    
+    # Music streaming
+    "spotify", "apple music", "amazon music", "tidal", "deezer",
+    "music streaming", "audio stream", "podcast",
+    
+    # Other
+    "game pass", "cloud gaming", "geforce now",
 ]
-
 # =============================================================================
 # HELPER FUNCTIONS
 # =============================================================================

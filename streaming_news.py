@@ -27,84 +27,87 @@ RSS_FEEDS = [
         "icon": "🔴"
     },
     {
-        "name": "TikTok Newsroom", 
-        "url": "https://newsroom.tiktok.com/rss/",
-        "icon": "🎵"
-    },
-    {
-        "name": "Twitch Blog",
-        "url": "https://blog.twitch.tv/en/rss/",
-        "icon": "💜"
-    },
-    {
         "name": "TOS.gg",
         "url": "https://tos.gg/rss/",
         "icon": "📺"
     },
     {
-        "name": "The Verge - Tech",
-        "url": "https://www.theverge.com/rss/index.xml",
-        "icon": "📰"
+        "name": "Streaming Media",
+        "url": "http://feeds.infotoday.com/StreamingMediaMagazine-FeaturedNews",
+        "icon": "🎬"
     },
     {
-        "name": "TechCrunch",
-        "url": "https://techcrunch.com/feed/",
-        "icon": "💚"
-    }
+        "name": "Streaming Media Blog",
+        "url": "http://feeds.infotoday.com/Streaming-Media-Blog",
+        "icon": "🎬"
+    },
+    {
+        "name": "Newsshooter",
+        "url": "https://www.newsshooter.com/feed/",
+        "icon": "📷"
+    },
 ]
-
 # Keywords that indicate streaming-relevant content (case-insensitive)
 STREAMING_KEYWORDS = [
     # Core live streaming terms
     "live stream", "livestream", "live video", "going live", "broadcast live",
-    "live production", "live event", "streaming live",
+    "live production", "live event",
     
-    # Platforms (live-specific)
+    # Platforms
     "twitch", "youtube live", "tiktok live", "instagram live", "facebook live",
-    "kick.com", "rumble live",
+    "kick.com",
     
     # Live streaming features
-    "super chat", "live chat", "stream chat", "channel points", "raids",
-    "gifted sub", "bits", "live donations", "stream alerts",
+    "super chat", "channel points", "raids", "gifted sub", "bits",
+    "stream alerts", "stream overlay",
     
     # Creator/streamer terms
-    "streamer", "live creator", "content creator", "vtuber",
+    "streamer", "streamers", "vtuber",
     
     # Live streaming tech & gear
     "obs studio", "streamlabs", "vmix", "ecamm", "wirecast", "xsplit",
-    "stream deck", "capture card", "encoder", "rtmp", "ndi",
-    "streaming software", "multicam", "live switcher",
+    "stream deck", "capture card", "elgato", "encoder", "rtmp", "ndi",
+    "streaming software", "multicam", "live switcher", "atem",
+    "ptz camera", "broadcast camera", "switcher studio", "video switcher"
     
     # Industry terms
-    "creator economy", "creator fund", "partner program", "live commerce",
-    "live shopping", "simulcast", "multistream",
+    "creator fund", "partner program", "live commerce", "live shopping",
+    "simulcast", "multistream",
 ]
 
-# Keywords to boost priority (very relevant to live streaming)
+# Keywords to boost priority
 HIGH_PRIORITY_KEYWORDS = [
     "live stream", "livestream", "twitch", "youtube live", "tiktok live",
-    "streamer", "obs studio", "going live", "live production", "stream deck",
-    "capture card", "live video", "live creator",
+    "streamer", "obs studio", "going live", "stream deck", "capture card",
+    "elgato", "atem", "vmix", "live production",
 ]
 
 # Keywords to exclude (reduces noise)
 EXCLUDE_KEYWORDS = [
-    # Streaming devices (not live streaming)
+    # Streaming devices
     "fire stick", "firestick", "fire tv", "roku", "chromecast", "apple tv",
     "streaming box", "streaming stick", "streaming device", "set-top box",
-    "4k streaming", "8k streaming",
+    "4k streaming", "8k streaming", "tv stick",
     
-    # VOD/entertainment streaming
+    # VOD services
     "netflix", "disney+", "disney plus", "hulu", "amazon prime video",
-    "hbo max", "paramount+", "peacock", "apple tv+",
-    "movie stream", "stream movies", "binge watch", "streaming service",
+    "hbo max", "paramount+", "peacock", "apple tv+", "max",
+    "movie stream", "binge watch", "streaming service",
     
     # Music streaming
     "spotify", "apple music", "amazon music", "tidal", "deezer",
     "music streaming", "audio stream", "podcast",
     
-    # Other
-    "game pass", "cloud gaming", "geforce now",
+    # AI/Tech noise
+    "anthropic", "openai", "chatgpt", "vibe coding", "venture capital",
+    "series a", "series b", "funding round", "ipo", "acquisition",
+    "cryptocurrency", "crypto", "bitcoin", "VC", "blockchain", "nft",
+    
+    # Gaming (not streaming)
+    "game pass", "cloud gaming", "geforce now", "xbox", "playstation",
+    
+    # General tech
+    "smartphone", "iphone", "android", "laptop", "tablet",
 ]
 # =============================================================================
 # HELPER FUNCTIONS

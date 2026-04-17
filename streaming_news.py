@@ -96,7 +96,7 @@ EXCLUDE_KEYWORDS = [
     
     # Music streaming
     "spotify", "apple music", "amazon music", "tidal", "deezer",
-    "music streaming", "audio stream", "podcast",
+    "music streaming", "audio stream", "podcast", "coachella",
     
     # AI/Tech noise
     "anthropic", "openai", "chatgpt", "vibe coding", "venture capital",

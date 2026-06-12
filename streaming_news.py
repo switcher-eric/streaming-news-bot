@@ -104,10 +104,10 @@ EXCLUDE_KEYWORDS = [
     "cryptocurrency", "crypto", "bitcoin", "VC", "blockchain", "nft",
     
     # Gaming (not streaming)
-    "game pass", "cloud gaming", "geforce now", "xbox", "playstation",
+    "game pass", "cloud gaming", "geforce now", "xbox", "playstation", "MrBeast", "IShowSpeed", "WWE", "Twitch",
     
     # General tech
-    "smartphone", "iphone", "android", "laptop", "tablet",
+    "smartphone", "laptop", "tablet",
 ]
 # =============================================================================
 # HELPER FUNCTIONS
